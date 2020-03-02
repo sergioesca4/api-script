@@ -10,15 +10,10 @@ API_BASE = os.getenv('PROD_API_BASE')
 token = { 'access_token': ACCESS_TOKEN }
 headers = { 'service-name': 'XXX'}
 
-hostnameCounter = 0
-
 def printJson(string, blob):
   print(string + '\n', json.dumps(blob, indent=4))
 
-def getOsName():
-  return "Windows 2016 DE" if random.random()>=0.6 else "Red Hat Enterprise 7.4"
-
-def postToOpaas(endpoint, payload):
+def post(endpoint, payload):
   global headers
   printJson(f'POSTing to endpoint /{endpoint}', payload)
 
@@ -40,18 +35,9 @@ def postToOpaas(endpoint, payload):
   else:
     raise Exception('Something went wrong creating the object!')
 
-def postInstance(zoneName):
-  global hostnameCounter
+def postInstance():
   with open('./payload.json') as json_file:
     payload = json.load(json_file)
-    hostname = f'securityzonetest{hostnameCounter}'
-    hostnameCounter+=1
-    payload['osName'] = getOsName()
-    payload['zoneName'] = zoneName
-    payload['hostname'] = hostname
-    payload['customerHostname'] = hostname
-    postToOpaas('instances', payload)
+    post('instances', payload)
 
-zoneNames = []
-for zoneName in zoneNames:
-  postInstance(zoneName)
+postInstance()
