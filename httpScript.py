@@ -8,6 +8,7 @@ load_dotenv()
 ACCESS_TOKEN = os.getenv('PROD_ACCESS_TOKEN')
 API_BASE = os.getenv('PROD_API_BASE')
 token = { 'access_token': ACCESS_TOKEN }
+headers = { 'service-name': 'XXX'}
 
 hostnameCounter = 0
 
@@ -18,15 +19,17 @@ def getOsName():
   return "Windows 2016 DE" if random.random()>=0.6 else "Red Hat Enterprise 7.4"
 
 def postToOpaas(endpoint, payload):
+  global headers
   printJson(f'POSTing to endpoint /{endpoint}', payload)
 
   response = requests.post(
     url=API_BASE+'/'+endpoint,
     json=payload,
+    headers=headers,
     params=token,
     verify=False
   )
-
+  print (response.text)
   responseJson = json.loads(response.text)
 
   print('Response code', response.status_code)
