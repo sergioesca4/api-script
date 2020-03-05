@@ -37,7 +37,8 @@ def post(endpoint, payload):
 
 def postInstance():
   with open('./payload.json') as json_file:
+    endpoint = 'XXX'
     payload = json.load(json_file)
-    post('instances', payload)
+    post(endpoint, payload)
 
 postInstance()
