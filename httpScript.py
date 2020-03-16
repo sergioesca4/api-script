@@ -5,10 +5,10 @@ import random
 from dotenv import load_dotenv
 load_dotenv()
 
-ACCESS_TOKEN = os.getenv('PROD_ACCESS_TOKEN')
-API_BASE = os.getenv('PROD_API_BASE')
+ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
+API_BASE = os.getenv('API_BASE')
 token = { 'access_token': ACCESS_TOKEN }
-headers = { 'service-name': 'XXX'}
+headers = { 'header-example': 'XXX'}
 
 def printJson(string, blob):
   print(string + '\n', json.dumps(blob, indent=4))
@@ -37,7 +37,7 @@ def post(endpoint, payload):
 
 def postInstance():
   with open('./payload.json') as json_file:
-    endpoint = 'XXX'
+    endpoint = 'api-endpoint'
     payload = json.load(json_file)
     post(endpoint, payload)
 

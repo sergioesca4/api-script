@@ -2,8 +2,9 @@
 
 A python script that creates API instances with a payload.
 
-## Acceptance criteria
-The script will successfully make API calls to an API.
+## Details
+
+The script can include a payload or headers.
 
 ## How to use
 
@@ -13,6 +14,8 @@ The script will successfully make API calls to an API.
 
 -Update the API Headers to fit your needs
 
--Update the API endpoint in postInstance() on the post('XXX', payload)
+-Update the `payload.json` file to fit your payload needs
+
+-Update the API endpoint in postInstance() on the post('api-endpoint', payload)
 
 -run `Python3 httpScript.py`
