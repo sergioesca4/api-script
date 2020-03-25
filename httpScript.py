@@ -8,7 +8,7 @@ load_dotenv()
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 API_BASE = os.getenv('API_BASE')
 token = { 'access_token': ACCESS_TOKEN }
-headers = { 'header-example': 'XXX'}
+headers = { 'header-example': 'CHANGE'}
 
 def printJson(string, blob):
   print(string + '\n', json.dumps(blob, indent=4))
@@ -37,7 +37,7 @@ def post(endpoint, payload):
 
 def postInstance():
   with open('./payload.json') as json_file:
-    endpoint = 'api-endpoint'
+    endpoint = 'CHANGE'
     payload = json.load(json_file)
     post(endpoint, payload)
 
